@@ -1,14 +1,15 @@
 module StringCalculator
 
+  # def self.add(string)
+  #   if string == '' || string == "0"
+  #     return 0
+  #   else
+  #     return string.to_i
+  #   end
+  # end
+
   def self.add(string)
-    # code to be tested goes here...
-    # return string.to_i * 0
-    if string != nil
-      return 0
-    end
-
-
-
+    string.to_i
   end
 
   # ...and here when the above becomes too complex.
