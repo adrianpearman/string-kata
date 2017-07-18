@@ -12,29 +12,28 @@ RSpec.describe StringCalculator, "#add" do
   end
 
   it "returns the value for a single degit" do
-    # Refractored versions of test parameter
-    # except(StringCalculator.add("0")).to eql(0)
-    # except(StringCalculator.add("1")).to eql(1)
-    # except(StringCalculator.add("2")).to eql(2)
-    # except(StringCalculator.add("3")).to eql(3)
-    # except(StringCalculator.add("4")).to eql(4)
-    # except(StringCalculator.add("5")).to eql(5)
-    # except(StringCalculator.add("6")).to eql(6)
-    # except(StringCalculator.add("7")).to eql(7)
-    # except(StringCalculator.add("8")).to eql(8)
-    # except(StringCalculator.add("9")).to eql(9)
-    #
-    # [0,1,2,3,4,5,6,7,8,9] each do |digit|
-    #   except(StringCalculator.add(digit.to_s)).to eql(digit)
-    # end
-    #
     (0..9).each do |digit|
       expect(StringCalculator.add(digit.to_s)).to eql(digit)
     end
+  end
 
-    it "returns the sum of two digits when seperated by a coma"do
+  it "returns the sum of two digits when seperated by a coma" do
+    expect(StringCalculator.add("1,2")).to eql(3)
+    expect(StringCalculator.add("7,9")).to eql(16)
+  end
 
-    end
+  it "returns the sum of two strnigs of digits when seperated by a coma" do
+    expect(StringCalculator.add("12,45")).to eql(57)
+    expect(StringCalculator.add("42,159")).to eql(201)
+  end
+
+  it "returns the sum of two strnigs of digits when seperated by a coma" do
+    expect(StringCalculator.add("15,22,45,79")).to eql(161)
+    expect(StringCalculator.add("1558,2,2442")).to eql(4002)
+  end
+
+  it "handles new lines like they were commas" do
+    expect(StringCalculator.add("1\n2,3")).to eql(6)
   end
 
 
